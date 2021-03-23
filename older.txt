@@ -1,0 +1,137 @@
+Last login: Thu Mar 18 22:44:04 on ttys001
+mac@MacBook-Air-cua-JoeyTran ~ % ls
+Applications		Movies			eclipse-workspace
+Desktop			Music			file-with-date
+Documents		Pictures		gretl
+Downloads		Public			sorted-file.save
+Library			eclipse			week3
+mac@MacBook-Air-cua-JoeyTran ~ % cd /Users/mac/Downloads/BUSA8090
+mac@MacBook-Air-cua-JoeyTran BUSA8090 % ls
+AWS				Week 01 lecture files-20210302
+Joey_AWS.pem			assignment1
+Joeydemo-main.zip		week3
+Public key.docx
+mac@MacBook-Air-cua-JoeyTran BUSA8090 % ls -a
+.				Joeydemo-main.zip
+..				Public key.docx
+.DS_Store			Week 01 lecture files-20210302
+AWS				assignment1
+Joey_AWS.pem			week3
+mac@MacBook-Air-cua-JoeyTran BUSA8090 % ls
+AWS				Week 01 lecture files-20210302
+Joey_AWS.pem			assignment1
+Joeydemo-main.zip		week3
+Public key.docx
+mac@MacBook-Air-cua-JoeyTran BUSA8090 % cd AWS
+mac@MacBook-Air-cua-JoeyTran AWS % pwd
+/Users/mac/Downloads/BUSA8090/AWS
+mac@MacBook-Air-cua-JoeyTran AWS % ls Joeytran_AWS.pem ssh -i Joeytran_AWS.pem ubuntu@ec2-18-222-77-203.us-east-2.compute.amazonaws.com
+ls: -i: No such file or directory
+ls: ssh: No such file or directory
+ls: ubuntu@ec2-18-222-77-203.us-east-2.compute.amazonaws.com: No such file or directory
+Joeytran_AWS.pem	Joeytran_AWS.pem
+mac@MacBook-Air-cua-JoeyTran AWS % ls Joeytran_AWS.pem
+Joeytran_AWS.pem
+mac@MacBook-Air-cua-JoeyTran AWS % ssh -i Joeytran_AWS.pem ubuntu@ec2-18-222-77-203.us-east-2.compute.amazonaws.com
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-1038-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Mar 18 18:57:20 UTC 2021
+
+  System load:  0.0               Processes:             109
+  Usage of /:   44.1% of 7.69GB   Users logged in:       1
+  Memory usage: 61%               IPv4 address for eth0: 172.31.41.152
+  Swap usage:   0%
+
+ * Introducing self-healing high availability clusters in MicroK8s.
+   Simple, hardened, Kubernetes for production, from RaspberryPi to DC.
+
+     https://microk8s.io/high-availability
+
+27 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run: apt list --upgradable
+
+
+*** System restart required ***
+Last login: Thu Mar 18 14:02:26 2021 from 115.77.137.82
+ubuntu@ip-172-31-41-152:~$ mkdir assignment1
+mkdir: cannot create directory ‘assignment1’: File exists
+ubuntu@ip-172-31-41-152:~$ scp -r -i Joeytran_AWS.pem /c/Users/mac/Downloads/BUSA8090/assignment1 ubuntu@ec2-18-222-77-203.us-east-2.compute.amazonaws.com:assignment1
+Warning: Identity file Joeytran_AWS.pem not accessible: No such file or directory.
+ubuntu@ec2-18-222-77-203.us-east-2.compute.amazonaws.com: Permission denied (publickey).
+lost connection
+ubuntu@ip-172-31-41-152:~$ cd assignment1
+ubuntu@ip-172-31-41-152:~/assignment1$ touch -t 202103081800 foo
+ubuntu@ip-172-31-41-152:~/assignment1$ touch -t 202103081801 goo
+ubuntu@ip-172-31-41-152:~/assignment1$ touch -t 202103081802 hoo
+ubuntu@ip-172-31-41-152:~/assignment1$ ls -l
+total 16
+-rw-rw-r-- 1 ubuntu ubuntu 321 Mar 18 15:12 case-cp.sh
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:00 foo
+-rwxrw-r-- 1 ubuntu ubuntu  76 Mar 18 15:06 funny.sh
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:01 goo
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:02 hoo
+-rwxrw-r-- 1 ubuntu ubuntu  17 Mar 18 18:54 older.sh
+-rwxrw-r-- 1 ubuntu ubuntu 214 Mar 18 18:39 question3.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ rm case-cp.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ ls -l
+total 12
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:00 foo
+-rwxrw-r-- 1 ubuntu ubuntu  76 Mar 18 15:06 funny.sh
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:01 goo
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:02 hoo
+-rwxrw-r-- 1 ubuntu ubuntu  17 Mar 18 18:54 older.sh
+-rwxrw-r-- 1 ubuntu ubuntu 214 Mar 18 18:39 question3.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ chmod u+x older.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ ./older.sh foo goo hoo
+-rw-rw-r-- 1 ubuntu ubuntu   0 Mar  8 18:00 foo
+ubuntu@ip-172-31-41-152:~/assignment1$ vi funny.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ vi funny.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ chmod u+x funny.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ ./funny.sh
+This is NOT funny
+ubuntu@ip-172-31-41-152:~/assignment1$ ./funny.sh q2
+This is funny
+ubuntu@ip-172-31-41-152:~/assignment1$ curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--case-cp.sh --output case-cp.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   321  100   321    0     0    490      0 --:--:-- --:--:-- --:--:--   490
+ubuntu@ip-172-31-41-152:~/assignment1$ ls
+case-cp.sh  foo  funny.sh  goo  hoo  older.sh  question3.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ ls
+case-cp.sh  foo  funny.sh  goo  hoo  older.sh  question3.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ ls
+case-cp.sh  foo  funny.sh  goo  hoo  older.sh  question3.sh
+ubuntu@ip-172-31-41-152:~/assignment1$ lsvi older.sh
+lsvi: command not found
+ubuntu@ip-172-31-41-152:~/assignment1$ vi older.sh
+
+ls -lt | tail -1
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+"older.sh" 1L, 17C                                            1,16          All
+
